@@ -8,7 +8,7 @@ function Home() {
 
   const getUsersData = async () => {
     try {
-      const { data: users } = await axios.get("http://localhost:3000/users");
+      const { data: users } = await axios.get("https://crud-backend-mocha.vercel.app/users");
       setUserData(users);
     } catch (error) {}
   };
@@ -27,7 +27,7 @@ function Home() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/users/${id}`);
+      await axios.delete(`https://crud-backend-mocha.vercel.app/users/${id}`);
       getUsersData();
     } catch (error) {
       console.error(error);
