@@ -3,29 +3,31 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const Navigate = useNavigate();
-  const [userData, setUserData] = useState();
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
+  
   const getUsersData = async () => {
     try {
       const { data: users } = await axios.get(
         "https://crud-backend-mocha.vercel.app/users"
       );
       setUserData(users);
-    } catch (error) {}
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
   };
 
-  const navToAdd = () => {
-    Navigate("/add");
+  const handleAdd = () => {
+    navigate("/add");
   };
 
   const handleView = (id) => {
-    Navigate(`/view/${id}`);
+    navigate(`/view/${id}`);
   };
 
   const handleUpdate = (id) => {
-    Navigate(`/update/${id}`);
+    navigate(`/update/${id}`);
   };
 
   const handleDelete = async (id) => {
@@ -33,7 +35,7 @@ function Home() {
       await axios.delete(`https://crud-backend-mocha.vercel.app/users/${id}`);
       getUsersData();
     } catch (error) {
-      console.error(error);
+      console.error('Error deleting user:', error);
     }
   };
 
@@ -41,11 +43,11 @@ function Home() {
     getUsersData();
   }, []);
 
-  const filteredData = userData?.filter(({ email, role, name }) => {
+  const filteredData = userData.filter(({ email, role, name }) =>
     name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      role.toLowerCase().includes(searchQuery.toLowerCase());
-  });
+    email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    role.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const tableStyle = {
     border: "1px solid black",
@@ -78,7 +80,7 @@ function Home() {
             </tr>
           </thead>
           <tbody>
-            {filteredData?.length > 0 ? (
+            {filteredData.length > 0 ? (
               filteredData.map(({ name, email, role, id }) => (
                 <tr key={id}>
                   <td style={{ ...tableStyle }}>{id}</td>
@@ -88,25 +90,19 @@ function Home() {
                   <td style={{ ...tableStyle }} className="flex gap-5">
                     <button
                       className="w-1/3 bg-blue-400 rounded-2xl h-10 text-white"
-                      onClick={() => {
-                        handleView(id);
-                      }}
+                      onClick={() => handleView(id)}
                     >
                       VIEW
                     </button>
                     <button
                       className="w-1/3 bg-orange-500 rounded-2xl h-10 text-white"
-                      onClick={() => {
-                        handleUpdate(id);
-                      }}
+                      onClick={() => handleUpdate(id)}
                     >
                       UPDATE
                     </button>
                     <button
                       className="w-1/3 bg-red-700 rounded-2xl h-10 text-white"
-                      onClick={() => {
-                        handleDelete(id);
-                      }}
+                      onClick={() => handleDelete(id)}
                     >
                       DELETE
                     </button>
@@ -133,7 +129,7 @@ function Home() {
               <td style={{ ...tableStyle }} className="text-center">
                 <button
                   className="bg-green-600 w-2/3 rounded-lg text-white text-xl h-9 hover:bg-cyan-950"
-                  onClick={navToAdd}
+                  onClick={handleAdd}
                 >
                   ADD
                 </button>
