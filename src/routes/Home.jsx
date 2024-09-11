@@ -6,7 +6,7 @@ function Home() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   const getUsersData = async () => {
     try {
       const { data: users } = await axios.get(
@@ -14,7 +14,7 @@ function Home() {
       );
       setUserData(users);
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error("Error fetching user data:", error);
     }
   };
 
@@ -35,7 +35,7 @@ function Home() {
       await axios.delete(`https://crud-backend-mocha.vercel.app/users/${id}`);
       getUsersData();
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error("Error deleting user:", error);
     }
   };
 
@@ -43,33 +43,34 @@ function Home() {
     getUsersData();
   }, []);
 
-  const filteredData = userData.filter(({ email, role, name }) =>
-    name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    role.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredData = userData.filter(
+    ({ email, role, name }) =>
+      name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      role.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const tableStyle = {
     border: "1px solid black",
     borderCollapse: "collapse",
-    padding: "0.7rem",
+    padding: "0.3rem",
     textAlign: "center",
   };
 
   return (
     <section className="w-full flex flex-col gap-5">
-      <header className="flex justify-center h-14 items-center font-sans text-2xl bg-blue-400 text-white w-full">
+      <header className="flex justify-center h-14 items-center font-sans text-2xl bg-blue-400 text-white w-full mob:text-xs">
         WELCOME TO REACT CRUD OPERATIONS
       </header>
       <input
         type="text"
-        className="p-3 border border-gray-400 rounded w-1/2 m-auto outline-none"
+        className="p-3 border border-gray-400 rounded w-1/2 m-auto outline-none mob:w-2/3 mob:h-9"
         placeholder="Search by name or email"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <main className="w-11/12 m-auto flex justify-center">
-        <table style={{ ...tableStyle, width: "100%" }}>
+      <main className="">
+        <table className="mob:text-xs">
           <thead>
             <tr>
               <th style={{ ...tableStyle }}>ID</th>
@@ -87,21 +88,24 @@ function Home() {
                   <td style={{ ...tableStyle }}>{name}</td>
                   <td style={{ ...tableStyle }}>{email}</td>
                   <td style={{ ...tableStyle }}>{role}</td>
-                  <td style={{ ...tableStyle }} className="flex gap-5">
+                  <td
+                    style={{ ...tableStyle }}
+                    className="flex gap-2 mob:flex-col"
+                  >
                     <button
-                      className="w-1/3 bg-blue-400 rounded-2xl h-10 text-white"
+                      className="w-1/3 bg-blue-400 rounded-2xl h-10 text-white mob:w-full mob:h-4 mob:text-xs mob:px-2"
                       onClick={() => handleView(id)}
                     >
                       VIEW
                     </button>
                     <button
-                      className="w-1/3 bg-orange-500 rounded-2xl h-10 text-white"
+                      className="w-1/3 bg-orange-500 rounded-2xl h-10 text-white mob:w-full mob:h-4 mob:text-xs mob:px-2"
                       onClick={() => handleUpdate(id)}
                     >
                       UPDATE
                     </button>
                     <button
-                      className="w-1/3 bg-red-700 rounded-2xl h-10 text-white"
+                      className="w-1/3 bg-red-700 rounded-2xl h-10 text-white mob:w-full mob:h-4 mob:text-xs mob:px-2"
                       onClick={() => handleDelete(id)}
                     >
                       DELETE
@@ -122,13 +126,13 @@ function Home() {
               <td
                 style={{ ...tableStyle }}
                 colSpan={4}
-                className="text-center bg-sky-600 text-white text-2xl"
+                className="text-center bg-sky-600 text-white text-2xl mob:text-xs"
               >
                 ADD NEW USER
               </td>
               <td style={{ ...tableStyle }} className="text-center">
                 <button
-                  className="bg-green-600 w-2/3 rounded-lg text-white text-xl h-9 hover:bg-cyan-950"
+                  className="bg-green-600 w-2/3 rounded-lg text-white text-xl h-9 hover:bg-cyan-950 mob:text-xs mob:w-full mob:h-4"
                   onClick={handleAdd}
                 >
                   ADD
@@ -138,7 +142,7 @@ function Home() {
           </tfoot>
         </table>
       </main>
-      <footer className="h-14 fixed bottom-0 w-full bg-slate-600"></footer>
+      <footer className="h-14 fixed bottom-0 w-full bg-slate-600 text-white flex justify-center items-center"> © All rights reserved @dpshetty </footer>
     </section>
   );
 }

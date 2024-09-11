@@ -24,7 +24,7 @@ function View() {
   return (
     <div className="w-full flex justify-center items-center">
       {userData ? (
-        <div className="border border-red-700 p-4 rounded-lg flex flex-col gap-5 w-1/2 justify-center items-center m-auto h-32 mt-20">
+        <div className="border border-red-700 p-4 rounded-lg flex flex-col gap-5 w-1/2 justify-center items-center m-auto h-32 mt-20 mob:w-11/12 mob:mt-52">
           <p>Username: {userData.name}</p>
           <p>User Email: {userData.email}</p>
           <p>User Role: {userData.role}</p>

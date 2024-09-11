@@ -50,15 +50,15 @@ function Update() {
   };
 
   return (
-    <div className="w-full flex justify-center items-center">
+    <div className="w-full flex justify-center items-center mob:mt-36">
       {userData ? (
         <form
           className="flex flex-col justify-center items-center w-full gap-5 p-5"
           onSubmit={handleSubmit}
         >
-          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400">
+          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400 mob:w-full">
             <label htmlFor="name" className="text-white">
-              NAME :
+              NAME:
             </label>
             <input
               type="text"
@@ -69,9 +69,9 @@ function Update() {
               className="rounded-2xl outline-none px-3 w-10/12 h-12"
             />
           </div>
-          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400">
+          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400 mob:w-full">
             <label htmlFor="email" className="text-white">
-              EMAIL :
+              EMAIL:
             </label>
             <input
               type="email"
@@ -82,9 +82,9 @@ function Update() {
               className="rounded-2xl outline-none px-3 w-10/12 h-12"
             />
           </div>
-          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400">
+          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400 mob:w-full">
             <label htmlFor="role" className="text-white">
-              ROLE :
+              ROLE:
             </label>
             <input
               type="text"
