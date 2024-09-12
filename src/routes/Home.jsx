@@ -70,7 +70,7 @@ function Home() {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <main className="">
-        <table className="mob:text-xs">
+        <table className="mob:text-xs w-11/12 m-auto">
           <thead>
             <tr>
               <th style={{ ...tableStyle }}>ID</th>
@@ -128,7 +128,7 @@ function Home() {
                 colSpan={4}
                 className="text-center bg-sky-600 text-white text-2xl mob:text-xs"
               >
-                ADD NEW USER
+                ADD NEW USER HERE 👉🏻👉🏻👉🏻
               </td>
               <td style={{ ...tableStyle }} className="text-center">
                 <button

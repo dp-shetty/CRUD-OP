@@ -53,6 +53,10 @@ function Update() {
     }
   };
 
+  const navToHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className="w-full flex justify-center items-center mob:mt-36">
       {userData ? (
@@ -101,9 +105,15 @@ function Update() {
           </div>
           <button
             type="submit"
-            className="border w-1/2 h-11 rounded-2xl bg-lime-500 text-white text-xl hover:bg-green-900"
+            className="border w-1/2 p-1 rounded-2xl bg-lime-500 text-white text-xl hover:bg-green-900 mob:text-xs mob:w-full"
           >
             UPDATE
+          </button>
+          <button
+            className="w-1/2 m-auto rounded-2xl bg-green-900 text-white p-1 mob:text-xs hover:bg-green-500 mob:w-full"
+            onClick={navToHome}
+          >
+            BACK
           </button>
         </form>
       ) : (

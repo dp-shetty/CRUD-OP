@@ -22,9 +22,6 @@ function Add() {
   const handleSubmit = (e) => {
     e.preventDefault();
     postData();
-    setTimeout(() => {
-      Navigate("/");
-    }, 3000);
   };
 
   const postData = async () => {
@@ -50,11 +47,18 @@ function Add() {
         },
       });
       toast.success("form submitted successfully");
+      setTimeout(() => {
+        Navigate("/");
+      }, 3000);
     } catch (error) {
       console.error(error);
       toast.error("error submitting the form");
     }
   };
+
+  const navToHome = ()=>{
+    Navigate('/')
+  }
 
   return (
     <section className="w-full flex flex-col gap-5">
@@ -104,10 +108,11 @@ function Add() {
           </div>
           <button
             type="submit"
-            className="border w-1/2 h-11 rounded-2xl bg-lime-500 text-white text-xl hover:bg-green-900"
+            className="border w-1/2 p-1 rounded-2xl bg-lime-500 text-white hover:bg-green-900 mob:text-xs mob:w-full"
           >
             SUBMIT
           </button>
+          <button className="w-1/2 m-auto rounded-2xl bg-green-900 text-white p-1 mob:text-xs hover:bg-green-500 mob:w-full" onClick={navToHome}>BACK</button>
         </form>
       </main>
       <footer className="h-14 fixed bottom-0 w-full bg-slate-600 text-white flex justify-center items-center">
