@@ -142,7 +142,10 @@ function Home() {
           </tfoot>
         </table>
       </main>
-      <footer className="h-14 fixed bottom-0 w-full bg-slate-600 text-white flex justify-center items-center"> © All rights reserved @dpshetty </footer>
+      <footer className="h-14 fixed bottom-0 w-full bg-slate-600 text-white flex justify-center items-center">
+        {" "}
+        © All rights reserved @dpshetty{" "}
+      </footer>
     </section>
   );
 }

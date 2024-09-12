@@ -29,7 +29,9 @@ function Add() {
 
   const postData = async () => {
     try {
-      const { data: users } = await axios.get("https://crud-backend-mocha.vercel.app/users");
+      const { data: users } = await axios.get(
+        "https://crud-backend-mocha.vercel.app/users"
+      );
       const userEmails = users.map(({ email }, i) => {
         return email;
       });
@@ -59,14 +61,14 @@ function Add() {
       <header className="flex justify-center h-14 items-center font-sans text-2xl bg-blue-400 text-white w-full">
         WELCOME
       </header>
-      <main className="w-11/12 m-auto">
+      <main className="w-11/12 m-auto ">
         <form
           className="flex flex-col justify-center items-center w-full gap-5 p-5"
           onSubmit={handleSubmit}
         >
-          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400">
+          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400 mob:w-full">
             <label htmlFor="name" className="text-white">
-              NAME :
+              NAME:
             </label>
             <input
               type="text"
@@ -76,9 +78,9 @@ function Add() {
               className="rounded-2xl outline-none px-3 w-10/12 h-12"
             />
           </div>
-          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400">
+          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400 mob:w-full">
             <label htmlFor="email" className="text-white">
-              EMAIL :
+              EMAIL:
             </label>
             <input
               type="email"
@@ -88,9 +90,9 @@ function Add() {
               onChange={handleChange}
             />
           </div>
-          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400">
+          <div className="flex gap-3 w-1/2 justify-center items-center p-3 rounded-2xl bg-slate-400 mob:w-full">
             <label htmlFor="role" className="text-white">
-              ROLE :
+              ROLE:
             </label>
             <input
               type="text"
@@ -108,7 +110,10 @@ function Add() {
           </button>
         </form>
       </main>
-      <footer className="h-14 fixed bottom-0 w-full bg-slate-600"></footer>
+      <footer className="h-14 fixed bottom-0 w-full bg-slate-600 text-white flex justify-center items-center">
+        {" "}
+        © All rights reserved @dpshetty{" "}
+      </footer>
       <Toaster />
     </section>
   );

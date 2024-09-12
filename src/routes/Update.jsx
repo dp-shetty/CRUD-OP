@@ -34,11 +34,15 @@ function Update() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://crud-backend-mocha.vercel.app/users/${userId}`, userData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.put(
+        `https://crud-backend-mocha.vercel.app/users/${userId}`,
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       toast.success("User updated successfully");
       setTimeout(() => {
         navigate(`/view/${userId}`);

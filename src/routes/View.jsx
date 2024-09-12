@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 function View() {
   const { id: userId } = useParams();
-  const [userData, setUserData] = useState(null); 
+  const [userData, setUserData] = useState(null);
 
   const fetchUser = async () => {
     try {

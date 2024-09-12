@@ -6,16 +6,23 @@ import Add from "../routes/Add";
 import View from "../routes/View";
 import Update from "../routes/Update";
 
-
 function MainRoute() {
   return (
     <BrowserRouter>
-    <Nav/>
+      <Nav />
       <Routes>
-        <Route path={'/'} element={<Home/>} >HOME</Route>
-        <Route path={'/view/:id'} element={<View/>} >VIEW</Route>
-        <Route path={'/update/:id'} element={<Update/>} >UPDATE</Route>
-        <Route path={'/add'} element={<Add/>} >ADD</Route>
+        <Route path={"/"} element={<Home />}>
+          HOME
+        </Route>
+        <Route path={"/view/:id"} element={<View />}>
+          VIEW
+        </Route>
+        <Route path={"/update/:id"} element={<Update />}>
+          UPDATE
+        </Route>
+        <Route path={"/add"} element={<Add />}>
+          ADD
+        </Route>
       </Routes>
     </BrowserRouter>
   );
